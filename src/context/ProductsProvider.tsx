@@ -5,6 +5,8 @@ export type ProductType = {
 	name: string;
 	price: number;
 };
+// state for fetching data from server if we dont have products in json
+// const initialState: ProductType[] = [];
 
 const initialState: ProductType[] = [
 	{
@@ -31,8 +33,24 @@ const initContextState: UseProductsContextType = { products: [] };
 const ProductsContext = createContext<UseProductsContextType>(initContextState);
 
 type ChildrenType = { children?: ReactElement | ReactElement[] | undefined };
+
 export const ProductsProvider = ({ children }: ChildrenType): ReactElement => {
 	const [products, setProducts] = useState<ProductType[]>(initialState);
+
+	// fetching data from server if we dont have products in json
+	// useEffect(() => {
+	// 	const fetchProducts = async (): Promise<ProductType[]> => {
+	// 		const data = await fetch('http://loacalhost:3500/products')
+	// 			.then((res) => {
+	// 				return res.json();
+	// 			})
+	// 			.catch((err) => {
+	// 				if (err instanceof Error) console.log(err.message);
+	// 			});
+	// 		return data;
+	// 	};
+	// 	fetchProducts().then((products) => setProducts(products));
+	// }, []);
 
 	return (
 		<ProductsContext.Provider value={{ products }}>

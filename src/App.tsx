@@ -1,5 +1,10 @@
+import { ProductsProvider } from './context/ProductsProvider';
+
 function App() {
-	return <div className='App'></div>;
+	return;
+	<ProductsProvider>
+		<div className='App'></div>
+	</ProductsProvider>;
 }
 
 export default App;

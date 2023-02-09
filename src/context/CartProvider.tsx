@@ -40,9 +40,11 @@ const reducer = (
 				(item) => item.sku !== sku
 			);
 			const itemExist: CartItemType | undefined = state.cart.find(
-				(item) => (item.sku = sku)
+				(item) => (item.sku === sku)
 			);
 			const qty: number = itemExist ? itemExist.qty + 1 : 1;
+			
+			
 
 			return {
 				...state,
